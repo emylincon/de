@@ -23,3 +23,13 @@ cobra add <subcommand_name> -p 'mainCommand_name'
 ```
 cobra add deactivate -p 'pythonCmd'
 ```
+
+## How to use
+* create python app
+```
+pkg create python --name emeka -e emeka@gmail.com -d /home/emeka/app
+```
+* create golang app
+```
+pkg create golang --name emeka -e emeka@gmail.com -d /home/emeka/app
+```
