@@ -12,7 +12,7 @@ import "fmt"
 
 
 func main() {
-	fmt.Prinln("Hello World")
+	fmt.Println("Hello World")
 }
 	`
 	return layout
