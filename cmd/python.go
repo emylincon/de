@@ -6,6 +6,7 @@ Copyright © 2022 Emeka Ugwuanyi <emylincon@gmail.com>
 package cmd
 
 import (
+	"github.com/emylincon/pkg/cmd/environment"
 	"github.com/spf13/cobra"
 )
 
@@ -15,6 +16,8 @@ var pythonCmd = &cobra.Command{
 	Short: "pkg subcommand",
 	Long:  `pkg subcommand`,
 }
+
+var pythonVenvMgr = environment.NewPythonVenvMgr()
 
 func init() {
 	rootCmd.AddCommand(pythonCmd)

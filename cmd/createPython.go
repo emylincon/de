@@ -6,7 +6,6 @@ Copyright © 2022 Emeka Ugwuanyi <emylincon@gmail.com>
 package cmd
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -19,7 +18,6 @@ var createPythonCmd = &cobra.Command{
 	Short: "Creates a basic python app template dev",
 	Long:  `Creates a basic python app template dev`,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		fmt.Println("create called")
 		dir, err := cmd.Flags().GetString("directory")
 		if err != nil {
 			return err
@@ -58,6 +56,11 @@ func init() {
 func python(directory, name, email string) error {
 	log.Println("directory: ", directory)
 	if err := os.Mkdir(directory, os.ModePerm); err != nil {
+		return err
+	}
+	// create virtual environment
+	err := pythonVenvMgr.Create(directory)
+	if err != nil {
 		return err
 	}
 	return createEnvironment(directory, name, email, "python")
