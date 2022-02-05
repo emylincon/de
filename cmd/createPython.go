@@ -6,7 +6,6 @@ Copyright © 2022 Emeka Ugwuanyi <emylincon@gmail.com>
 package cmd
 
 import (
-	"log"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -54,7 +53,6 @@ func init() {
 }
 
 func python(directory, name, email string) error {
-	log.Println("directory: ", directory)
 	if err := os.Mkdir(directory, os.ModePerm); err != nil {
 		return err
 	}
