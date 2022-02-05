@@ -6,7 +6,7 @@ Copyright © 2022 Emeka Ugwuanyi <emylincon@gmail.com>
 package cmd
 
 import (
-	"github.com/emylincon/pkg/cmd/environment"
+	"github.com/emylincon/de/cmd/environment"
 	"github.com/spf13/cobra"
 )
 

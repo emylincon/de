@@ -5,7 +5,7 @@ import (
 	"os"
 	"text/template"
 
-	"github.com/emylincon/pkg/cmd/templates"
+	"github.com/emylincon/de/cmd/templates"
 )
 
 // Details struct
