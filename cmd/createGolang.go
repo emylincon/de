@@ -7,7 +7,6 @@ package cmd
 
 import (
 	"fmt"
-	"log"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -56,7 +55,6 @@ func init() {
 }
 
 func golang(directory, name, email string) error {
-	log.Println("directory: ", directory)
 	if err := os.Mkdir(directory, os.ModePerm); err != nil {
 		return err
 	}
