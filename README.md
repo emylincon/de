@@ -1,5 +1,6 @@
-# pkg
-pkg create-python-app or pkg create-go-app
+# de (Development Environment)
+Create python or go development environment.
+de create python app or de create go app
 
 ## Contributing
 * application is designed using [cobra](https://www.linode.com/docs/guides/using-cobra/)
@@ -27,9 +28,9 @@ cobra add deactivate -p 'pythonCmd'
 ## How to use
 * create python app
 ```
-pkg create python --name emeka -e emeka@gmail.com -d /home/emeka/app
+de create python --name emeka -e emeka@gmail.com -d /home/emeka/app
 ```
 * create golang app
 ```
-pkg create golang --name emeka -e emeka@gmail.com -d /home/emeka/app
+de create golang --name emeka -e emeka@gmail.com -d /home/emeka/app
 ```
