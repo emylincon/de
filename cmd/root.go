@@ -13,11 +13,11 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "de",
-	Short: "de helps bootstrap a new dev environment",
-	Long: `de (development environment) helps bootstrap a new dev environment:
+	Use:   "dec",
+	Short: "dec helps bootstrap a new dev environment",
+	Long: `dec (development environment) helps bootstrap a new dev environment:
 
-de is a CLI tool for Go and python.
+dec is a CLI tool for Go and python.
 This tool helps to generate the needed files
 to quickly create a go or python app`,
 	// Uncomment the following line if your bare application

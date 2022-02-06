@@ -1,4 +1,4 @@
-module github.com/emylincon/de
+module github.com/emylincon/dec
 
 go 1.17
 
