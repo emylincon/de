@@ -28,9 +28,9 @@ cobra add deactivate -p 'pythonCmd'
 ## How to use
 * create python app
 ```
-de create python --name emeka -e emeka@gmail.com -d /home/emeka/app
+de python create --name emeka -e emeka@gmail.com -d /home/emeka/app
 ```
 * create golang app
 ```
-de create golang --name emeka -e emeka@gmail.com -d /home/emeka/app
+de golang create --name emeka -e emeka@gmail.com -d /home/emeka/app
 ```

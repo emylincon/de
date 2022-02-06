@@ -27,6 +27,20 @@ func tearDown() {
 	pkgm.Delete()
 }
 
+func before() {
+	err := os.Chdir(directory)
+	if err != nil {
+		log.Fatalf("[ChDir Error]: %v", err)
+	}
+}
+
+func after() {
+	err := os.Chdir("../")
+	if err != nil {
+		log.Fatalf("[ChDir Error]: %v", err)
+	}
+}
+
 func TestMain(m *testing.M) {
 	setUp()
 	code := m.Run()
@@ -41,17 +55,27 @@ func TestPythonVenv(t *testing.T) {
 	}
 }
 
+// func TestActivatePythonEnv(t *testing.T) {
+// 	before()
+// 	if err := pkgm.Activate(); err != nil {
+// 		t.Errorf("TestActivatePythonEnv: %v", err)
+// 	}
+// 	after()
+// }
+
+// func TestDeactivatePythonEnv(t *testing.T) {
+// 	before()
+// 	if err := pkgm.Deactivate(); err != nil {
+// 		t.Errorf("TestDeactivatePythonEnv: %v", err)
+// 	}
+// 	after()
+// }
+
 func TestDelete(t *testing.T) {
-	err := os.Chdir(directory)
-	if err != nil {
-		log.Fatalf("TestDelete: [ChDir Error]:%v \n", err)
-	}
-	err = pkgm.Delete()
+	before()
+	err := pkgm.Delete()
 	if err != nil {
 		t.Errorf("TestDelete: [Error]: %v", err)
 	}
-	err = os.Chdir("../")
-	if err != nil {
-		log.Fatalf("TestDelete: [ChDir Error]:%v \n", err)
-	}
+	after()
 }

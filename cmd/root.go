@@ -13,11 +13,11 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "pkg",
-	Short: "pkg helps bootstrap a new dev environment",
-	Long: `pkg helps bootstrap a new dev environment. For example:
+	Use:   "de",
+	Short: "de helps bootstrap a new dev environment",
+	Long: `de (development environment) helps bootstrap a new dev environment:
 
-pkg is a CLI tool for Go and python.
+de is a CLI tool for Go and python.
 This tool helps to generate the needed files
 to quickly create a go or python app`,
 	// Uncomment the following line if your bare application
