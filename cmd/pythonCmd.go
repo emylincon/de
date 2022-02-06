@@ -13,8 +13,8 @@ import (
 // pythonCmd represents the python command
 var pythonCmd = &cobra.Command{
 	Use:   "python",
-	Short: "pkg subcommand",
-	Long:  `pkg subcommand`,
+	Short: "de subcommand",
+	Long:  `de subcommand`,
 }
 
 var pythonVenvMgr = environment.NewPythonVenvMgr()
