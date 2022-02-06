@@ -1,6 +1,6 @@
-# de (Development Environment)
+# DEC (Development Environment Creator)
 Create python or go development environment.
-de create python app or de create go app
+dec create python app or de create go app
 
 ## Contributing
 * application is designed using [cobra](https://www.linode.com/docs/guides/using-cobra/)
@@ -28,9 +28,9 @@ cobra add deactivate -p 'pythonCmd'
 ## How to use
 * create python app
 ```
-de python create --name emeka -e emeka@gmail.com -d /home/emeka/app
+dec python create --name emeka -e emeka@gmail.com -d /home/emeka/app
 ```
 * create golang app
 ```
-de golang create --name emeka -e emeka@gmail.com -d /home/emeka/app
+dec golang create --name emeka -e emeka@gmail.com -d /home/emeka/app
 ```

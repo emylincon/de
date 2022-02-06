@@ -6,15 +6,15 @@ Copyright © 2022 Emeka Ugwuanyi <emylincon@gmail.com>
 package cmd
 
 import (
-	"github.com/emylincon/de/cmd/environment"
+	"github.com/emylincon/dec/cmd/environment"
 	"github.com/spf13/cobra"
 )
 
 // pythonCmd represents the python command
 var pythonCmd = &cobra.Command{
 	Use:   "python",
-	Short: "de subcommand",
-	Long:  `de subcommand`,
+	Short: "dec subcommand",
+	Long:  `dec subcommand`,
 }
 
 var pythonVenvMgr = environment.NewPythonVenvMgr()

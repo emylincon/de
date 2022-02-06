@@ -12,8 +12,8 @@ import (
 // golangCmd represents the golang command
 var golangCmd = &cobra.Command{
 	Use:   "golang",
-	Short: "de subcommand",
-	Long:  `de subcommand`,
+	Short: "dec subcommand",
+	Long:  `dec subcommand`,
 }
 
 func init() {
