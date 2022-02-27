@@ -2,9 +2,12 @@ package environment
 
 import (
 	"errors"
+	"fmt"
 	"os"
 	"os/exec"
 	"runtime"
+
+	"github.com/atotto/clipboard"
 )
 
 // error variables block
@@ -69,26 +72,35 @@ func (p PythonVenvMgr) windowsShell() string {
 }
 
 // Activate activates venv
-func (p PythonVenvMgr) Activate() error {
-	path, err := p.getVenvPath()
+func (p PythonVenvMgr) Activate() (string, error) {
+	// verify path exists
+	_, err := p.getVenvPath()
 	if err != nil {
-		return err
+		return "", err
 	}
+	path := "venv"
 
 	if runtime.GOOS == "windows" {
 		switch p.windowsShell() {
 		case "cmd.exe":
-			return exec.Command(path + "/Scripts/activate.bat").Run()
+			cmd := fmt.Sprintf("%s/Scripts/activate.bat", path)
+			clipboard.WriteAll(cmd)
+			return fmt.Sprintf("Run on your shell: `%s` ", cmd), nil
 		default:
-			return exec.Command(path + "/Scripts/Activate.ps1").Run()
+			cmd := fmt.Sprintf("%s/Scripts/Activate.ps1", path)
+			return fmt.Sprintf("Run on your shell: `%s` ", cmd), nil
 		}
 	} else {
-		return exec.Command("source", path+"/bin/activate").Run()
+		cmd := fmt.Sprintf("source %s/bin/activate", path)
+		clipboard.WriteAll(cmd)
+		return fmt.Sprintf("Run command on your shell:\n\033[35m%s \033[0m", cmd), nil
 	}
 
 }
 
 // Deactivate deactivates venv
-func (p PythonVenvMgr) Deactivate() error {
-	return exec.Command("deactivate").Run()
+func (p PythonVenvMgr) Deactivate() string {
+	cmd := "deactivate"
+	clipboard.WriteAll(cmd)
+	return fmt.Sprintf("Run command on your shell:\n\033[33m%s \033[0m", cmd)
 }

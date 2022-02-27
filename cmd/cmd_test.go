@@ -22,6 +22,8 @@ func setUp() {
 		log.Fatalln("Golang Setup error: " + err.Error())
 	}
 	log.Println("set up complete")
+	ipath, _ := os.Getwd()
+	log.Printf("\n\nworking dir => %s\n\n", ipath)
 }
 
 func tearDown() {
