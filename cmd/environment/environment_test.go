@@ -55,21 +55,21 @@ func TestPythonVenv(t *testing.T) {
 	}
 }
 
-// func TestActivatePythonEnv(t *testing.T) {
-// 	before()
-// 	if err := pkgm.Activate(); err != nil {
-// 		t.Errorf("TestActivatePythonEnv: %v", err)
-// 	}
-// 	after()
-// }
+func TestActivatePythonEnv(t *testing.T) {
+	before()
+	if _, err := pkgm.Activate(); err != nil {
+		t.Errorf("TestActivatePythonEnv: %v", err)
+	}
+	after()
+}
 
-// func TestDeactivatePythonEnv(t *testing.T) {
-// 	before()
-// 	if err := pkgm.Deactivate(); err != nil {
-// 		t.Errorf("TestDeactivatePythonEnv: %v", err)
-// 	}
-// 	after()
-// }
+func TestDeactivatePythonEnv(t *testing.T) {
+	before()
+	if response := pkgm.Deactivate(); response != "Run command on your shell:\n\033[33mdeactivate \033[0m" {
+		t.Errorf("TestDeactivatePythonEnv: Response do not match: %v", response)
+	}
+	after()
+}
 
 func TestDelete(t *testing.T) {
 	before()

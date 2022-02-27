@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/emylincon/dec/cmd/environment"
 	"github.com/spf13/cobra"
 )
 
@@ -58,6 +59,10 @@ func golang(directory, name, email string) error {
 	if err := os.Mkdir(directory, os.ModePerm); err != nil {
 		return err
 	}
+	err := createEnvironment(directory, name, email, "golang")
+	if err != nil {
+		return err
+	}
+	return environment.GoModTidy(directory)
 
-	return createEnvironment(directory, name, email, "golang")
 }
