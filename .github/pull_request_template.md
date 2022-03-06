@@ -1,12 +1,3 @@
----
-name: Pull Request
-about: PR opened by developer
-title: "[PR]: "
-labels: feature
-assignees: emylincon
-
----
-
 ## Linked Issue
 <!--
     Include related issues with [closing keywords](https://docs.github.com/en/enterprise-server@3.0/github/writing-on-github/working-with-advanced-formatting/using-keywords-in-issues-and-pull-requests#linking-a-pull-request-to-an-issue)
