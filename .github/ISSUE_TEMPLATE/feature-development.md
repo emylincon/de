@@ -4,6 +4,7 @@ about: Feature opened by developer
 title: "[Feature]: "
 labels: feature
 assignees: emylincon
+projects: Development Environment Creator (DEC)
 
 ---
 
