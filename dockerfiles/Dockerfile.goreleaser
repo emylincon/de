@@ -1,7 +1,9 @@
 FROM ugwuanyi/golang-python:1.17-3.9
 
+WORKDIR /dec
+
 RUN ls -la
 
-COPY pkg /usr/local/bin/dec
+COPY dec /usr/local/bin/dec
 
 ENTRYPOINT [ "dec" ]

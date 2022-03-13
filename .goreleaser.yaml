@@ -4,7 +4,7 @@ before:
   hooks:
     # You may remove this if you don't use go modules.
     - go mod tidy
-    - go test ./...
+    - go build
 
 builds:
   - env:
@@ -37,6 +37,8 @@ dockers:
       - "ugwuanyi/dec:v{{ .Major }}.{{ .Minor }}"
       - "ugwuanyi/dec:latest"
     dockerfile: dockerfiles/Dockerfile.goreleaser
+    extra_files:
+      - "dec"
 
 brews:
   - name: dec
