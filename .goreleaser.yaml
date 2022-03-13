@@ -37,6 +37,8 @@ dockers:
       - "ugwuanyi/dec:v{{ .Major }}.{{ .Minor }}"
       - "ugwuanyi/dec:latest"
     dockerfile: dockerfiles/Dockerfile.goreleaser
+    extra_files:
+      - dist/dec_linux_amd64/dec
 
 brews:
   - name: dec

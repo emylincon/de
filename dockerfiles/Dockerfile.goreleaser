@@ -1,5 +1,7 @@
 FROM ugwuanyi/golang-python:1.17-3.9
 
-COPY pkg /usr/local/bin/dec
+RUN ls -la
+
+COPY dist/dec_linux_amd64/dec /usr/local/bin/dec
 
 ENTRYPOINT [ "dec" ]
