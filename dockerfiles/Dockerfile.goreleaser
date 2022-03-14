@@ -1,0 +1,7 @@
+FROM ugwuanyi/golang-python:1.17-3.9
+
+WORKDIR /dec
+
+COPY dec /usr/local/bin/dec
+
+ENTRYPOINT [ "dec" ]
