@@ -32,10 +32,27 @@ func (p PythonVenvMgr) fullVenvPath(path string) string {
 	return path + "/" + p.venv
 }
 
+func (p PythonVenvMgr) requirements(directory string) error {
+	file := []byte("# run pip freeze > requirements.txt")
+	return os.WriteFile(directory+"/requirements.txt", file, 0644)
+
+}
+
+func (p PythonVenvMgr) updatePip(directory string) error {
+	cmd := exec.Command(p.fullVenvPath(directory)+"/bin/python3", "-m", "pip", "install", "--upgrade", "pip")
+	return cmd.Run()
+}
+
 // Create creates a venv
 func (p PythonVenvMgr) Create(directory string) error {
 	cmd := exec.Command("python3", "-m", "venv", p.fullVenvPath(directory))
-	return cmd.Run()
+	if err := cmd.Run(); err != nil {
+		return err
+	}
+	if err := p.requirements(directory); err != nil {
+		return err
+	}
+	return p.updatePip(directory)
 }
 
 func (p PythonVenvMgr) getVenvPath() (string, error) {

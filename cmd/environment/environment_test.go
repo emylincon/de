@@ -1,6 +1,7 @@
 package environment
 
 import (
+	"errors"
 	"log"
 	"os"
 	"testing"
@@ -53,6 +54,14 @@ func TestPythonVenv(t *testing.T) {
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 		t.Errorf("Error TestPythonVenv: \n[Path]: %v \n[Err]: %v", path, err)
 	}
+}
+
+func TestRequirements(t *testing.T) {
+	path := directory + "/requirements.txt"
+	if _, err := os.Stat(path); errors.Is(err, os.ErrNotExist) {
+		t.Errorf("Error TestRequirements: \n[Path]: %v \n[Err]: %v", path, err)
+	}
+
 }
 
 func TestActivatePythonEnv(t *testing.T) {
