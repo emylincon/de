@@ -61,7 +61,13 @@ func TestRequirements(t *testing.T) {
 	if _, err := os.Stat(path); errors.Is(err, os.ErrNotExist) {
 		t.Errorf("Error TestRequirements: \n[Path]: %v \n[Err]: %v", path, err)
 	}
+}
 
+func TestGitIgnore(t *testing.T) {
+	path := directory + "/.gitignore"
+	if _, err := os.Stat(path); errors.Is(err, os.ErrNotExist) {
+		t.Errorf("Error TestGitIgnore: \n[Path]: %v \n[Err]: %v", path, err)
+	}
 }
 
 func TestActivatePythonEnv(t *testing.T) {

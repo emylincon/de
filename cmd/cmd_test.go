@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -47,6 +48,14 @@ func TestDir(t *testing.T) {
 	for _, path := range testPaths {
 		if _, err := os.Stat(path); os.IsNotExist(err) {
 			t.Errorf("Error TestDir: \n[Path]: %v \n[Err]: %v", path, err)
+		}
+	}
+}
+
+func TestGitIgnore(t *testing.T) {
+	for _, path := range testPaths {
+		if _, err := os.Stat(path + "/.gitignore"); errors.Is(err, os.ErrNotExist) {
+			t.Errorf("Error TestGitIgnore: \n[Path]: %v \n[Err]: %v", path, err)
 		}
 	}
 }
