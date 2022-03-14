@@ -63,6 +63,6 @@ func golang(directory, name, email string) error {
 	if err != nil {
 		return err
 	}
-	return environment.GoModTidy(directory)
+	return environment.CreateGoEnvironment(directory)
 
 }

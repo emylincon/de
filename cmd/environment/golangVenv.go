@@ -5,8 +5,17 @@ import (
 	"os/exec"
 )
 
-// GoModTidy runs go mod tidy to init the module
-func GoModTidy(directory string) error {
+// CreateGoEnvironment runs go mod tidy and create .gitignore
+func CreateGoEnvironment(directory string) error {
+	if err := goModTidy(directory); err != nil {
+		return err
+	}
+	return getIgnore(directory+"/.gitignore", "golang")
+
+}
+
+// goModTidy runs go mod tidy to init the module
+func goModTidy(directory string) error {
 	workingDir, _ := os.Getwd()
 	if err := os.Chdir(directory); err != nil {
 		return err

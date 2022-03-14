@@ -38,6 +38,10 @@ func (p PythonVenvMgr) requirements(directory string) error {
 
 }
 
+func (p PythonVenvMgr) gitignore(directory string) error {
+	return getIgnore(directory+"/.gitignore", "python")
+}
+
 func (p PythonVenvMgr) updatePip(directory string) error {
 	cmd := exec.Command(p.fullVenvPath(directory)+"/bin/python3", "-m", "pip", "install", "--upgrade", "pip")
 	return cmd.Run()
@@ -52,7 +56,10 @@ func (p PythonVenvMgr) Create(directory string) error {
 	if err := p.requirements(directory); err != nil {
 		return err
 	}
-	return p.updatePip(directory)
+	if err := p.updatePip(directory); err != nil {
+		return err
+	}
+	return p.gitignore(directory)
 }
 
 func (p PythonVenvMgr) getVenvPath() (string, error) {
