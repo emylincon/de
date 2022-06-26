@@ -2,9 +2,13 @@ package cmd
 
 import (
 	"errors"
+	"fmt"
 	"os"
+	"strings"
 	"text/template"
+	"time"
 
+	"github.com/emylincon/dec/cmd/licences"
 	"github.com/emylincon/dec/cmd/templates"
 )
 
@@ -12,6 +16,12 @@ import (
 type Details struct {
 	Name  string
 	Email string
+}
+
+// LicenseObj struct
+type LicenseObj struct {
+	Fullname string
+	Year     int
 }
 
 func createEnvironment(path, name, email, kind string) error {
@@ -32,7 +42,7 @@ func createEnvironment(path, name, email, kind string) error {
 	if err != nil {
 		return err
 	}
-	d := Details{
+	tmpData := Details{
 		Name:  name,
 		Email: email,
 	}
@@ -41,6 +51,36 @@ func createEnvironment(path, name, email, kind string) error {
 	if err != nil {
 		return err
 	}
-	err = tmpl.Execute(file, d)
+	err = tmpl.Execute(file, tmpData)
 	return err
+}
+
+func setUpLicense(path, licenseName, fullname string) error {
+	tmp := ""
+
+	switch strings.ToLower(licenseName) {
+	case "mit":
+		path += "/LICENSE"
+		tmp = licences.MITTemplate()
+
+	default:
+		return fmt.Errorf("license name: '%s' is not implemented", licenseName)
+	}
+
+	file, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	tmpData := LicenseObj{
+		Fullname: fullname,
+		Year:     time.Now().Year(),
+	}
+
+	tmpl, err := template.New("temp").Parse(tmp)
+	if err != nil {
+		return err
+	}
+	err = tmpl.Execute(file, tmpData)
+	return err
+
 }
