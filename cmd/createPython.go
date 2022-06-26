@@ -29,9 +29,13 @@ var createPythonCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
+		license, err := cmd.Flags().GetString("license")
+		if err != nil {
+			return err
+		}
 
-		python(dir, name, email)
-		return nil
+		return python(dir, name, email, license)
+
 	},
 }
 
@@ -40,6 +44,7 @@ func init() {
 	createPythonCmd.Flags().StringP("directory", "d", "", "directory for go app")
 	createPythonCmd.Flags().StringP("name", "n", "name", "name of developer")
 	createPythonCmd.Flags().StringP("email", "e", "email.gmail.com", "email address of developer")
+	createPythonCmd.Flags().StringP("license", "l", "MIT", "license for code")
 
 	// Here you will define your flags and configuration settings.
 
@@ -52,7 +57,7 @@ func init() {
 	// createCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
-func python(directory, name, email string) error {
+func python(directory, name, email, license string) error {
 	if err := os.Mkdir(directory, os.ModePerm); err != nil {
 		return err
 	}
@@ -61,5 +66,9 @@ func python(directory, name, email string) error {
 	if err != nil {
 		return err
 	}
-	return createEnvironment(directory, name, email, "python")
+	err = createEnvironment(directory, name, email, "python")
+	if err != nil {
+		return err
+	}
+	return setUpLicense(directory, license, name)
 }

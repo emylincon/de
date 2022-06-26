@@ -6,7 +6,6 @@ Copyright © 2022 Emeka Ugwuanyi <emylincon@gmail.com>
 package cmd
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/emylincon/dec/cmd/environment"
@@ -19,7 +18,6 @@ var createGolangCmd = &cobra.Command{
 	Short: "Create a basic go app template",
 	Long:  `Create a basic go app template`,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		fmt.Println("golang called")
 		dir, err := cmd.Flags().GetString("directory")
 		if err != nil {
 			return err
@@ -32,9 +30,13 @@ var createGolangCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
+		license, err := cmd.Flags().GetString("license")
+		if err != nil {
+			return err
+		}
 
-		golang(dir, name, email)
-		return nil
+		return golang(dir, name, email, license)
+
 	},
 }
 
@@ -43,6 +45,7 @@ func init() {
 	createGolangCmd.Flags().StringP("directory", "d", "", "directory for go app")
 	createGolangCmd.Flags().StringP("name", "n", "name", "name of developer")
 	createGolangCmd.Flags().StringP("email", "e", "email.gmail.com", "email address of developer")
+	createGolangCmd.Flags().StringP("license", "l", "MIT", "license for code")
 
 	// Here you will define your flags and configuration settings.
 
@@ -55,7 +58,7 @@ func init() {
 	// createCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
-func golang(directory, name, email string) error {
+func golang(directory, name, email, license string) error {
 	if err := os.Mkdir(directory, os.ModePerm); err != nil {
 		return err
 	}
@@ -63,6 +66,10 @@ func golang(directory, name, email string) error {
 	if err != nil {
 		return err
 	}
-	return environment.CreateGoEnvironment(directory)
+	err = environment.CreateGoEnvironment(directory)
+	if err != nil {
+		return err
+	}
+	return setUpLicense(directory, license, name)
 
 }

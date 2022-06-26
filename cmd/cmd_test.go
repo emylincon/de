@@ -11,14 +11,15 @@ import (
 var testPaths = map[string]string{"python": "ipython", "golang": "igolang"}
 
 func setUp() {
+	licenseName := "MIT"
 	path, name, email := testPaths["python"], "emeka", "emeka@gmail.com"
-	err := python(path, name, email)
+	err := python(path, name, email, licenseName)
 	if err != nil {
 		log.Fatalln("Python Setup error: " + err.Error())
 	}
 
 	path, name, email = testPaths["golang"], "emeka", "emeka@gmail.com"
-	err = golang(path, name, email)
+	err = golang(path, name, email, licenseName)
 	if err != nil {
 		log.Fatalln("Golang Setup error: " + err.Error())
 	}
@@ -56,6 +57,14 @@ func TestGitIgnore(t *testing.T) {
 	for _, path := range testPaths {
 		if _, err := os.Stat(path + "/.gitignore"); errors.Is(err, os.ErrNotExist) {
 			t.Errorf("Error TestGitIgnore: \n[Path]: %v \n[Err]: %v", path, err)
+		}
+	}
+}
+
+func TestLicense(t *testing.T) {
+	for _, path := range testPaths {
+		if _, err := os.Stat(path + "/LICENSE"); errors.Is(err, os.ErrNotExist) {
+			t.Errorf("Error TestLicense: \n[Path]: %v \n[Err]: %v", path, err)
 		}
 	}
 }
