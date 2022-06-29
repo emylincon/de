@@ -57,12 +57,13 @@ func createEnvironment(path, name, email, kind string) error {
 
 func setUpLicense(path, licenseName, fullname string) error {
 	tmp := ""
+	path += "/LICENSE"
 
 	switch strings.ToLower(licenseName) {
 	case "mit":
-		path += "/LICENSE"
 		tmp = licences.MITTemplate()
-
+	case "apache":
+		tmp = licences.ApacheTemplate()
 	default:
 		return fmt.Errorf("license name: '%s' is not implemented", licenseName)
 	}
