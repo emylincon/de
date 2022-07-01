@@ -69,3 +69,5 @@ To add the generated script to your `$PROFILE` file, run the following line in y
 ```powershell
 dec completion powershell >> $PROFILE
 ```
+
+[Help: problem with completion?](https://github.com/kubernetes-sigs/kind/issues/522)
