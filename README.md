@@ -1,8 +1,26 @@
+<p align="center">
+ <a style="text-decoration:none" href="https://img.shields.io/github/workflow/status/emylincon/dec/Go?style=for-the-badge" target="_blank">
+     <img src="https://img.shields.io/github/workflow/status/emylincon/dec/Go?style=for-the-badge" alt="Build Status" />
+ </a>
+ <a style="text-decoration:none" href="https://img.shields.io/badge/Version-1.4.5-informational?style=for-the-badge" target="_blank">
+     <img src="https://img.shields.io/badge/Version-0.0.3-informational?style=for-the-badge" alt="Version: 0.0.3" />
+ </a>
+ <a style="text-decoration:none" href="https://img.shields.io/github/license/emylincon/dec?style=for-the-badge" target="_blank">
+     <img src="https://img.shields.io/github/license/emylincon/dec?color=green&style=for-the-badge" alt="Version: 1.4.5" />
+ </a>
+ <a style="text-decoration:none" href="https://img.shields.io/github/languages/count/emylincon/dec?style=for-the-badge" target="_blank">
+ <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/emylincon/dec?style=for-the-badge">
+ </a>
+ <a style="text-decoration:none" href="https://godoc.org/github.com/emylincon/dec" target="_blank">
+     <img src="https://img.shields.io/badge/Go-Doc-informational?style=for-the-badge" alt="Documentation" />
+ </a>
+ </p>
+
 # DEC (Development Environment Creator)
 Create python or go development environment.
 dec create python app or de create go app
 
-## Contributing
+## Contributing ![report](https://goreportcard.com/badge/github.com/emylincon/dec)
 * application is designed using [cobra](https://www.linode.com/docs/guides/using-cobra/)
 
 ### Create new commands
