@@ -22,6 +22,10 @@ func TestLicenses(t *testing.T) {
 			desc: "GPL",
 			l:    GPLTemplate,
 		},
+		{
+			desc: "BSD",
+			l:    BSDTemplate,
+		},
 	}
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
