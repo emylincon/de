@@ -66,6 +66,8 @@ func setUpLicense(path, licenseName, fullname string) error {
 		tmp = licences.ApacheTemplate()
 	case "gpl":
 		tmp = licences.GPLTemplate()
+	case "bsd":
+		tmp = licences.BSDTemplate()
 	default:
 		return fmt.Errorf("license name: '%s' is not implemented", licenseName)
 	}
