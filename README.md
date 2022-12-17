@@ -1,6 +1,6 @@
 <p align="center">
  <a style="text-decoration:none" href="https://img.shields.io/github/actions/workflow/status/emylincon/dec/go.yml?branch=main&style=for-the-badge" target="_blank">
-     <img src="https://img.shields.io/github/workflow/status/emylincon/dec/Go?style=for-the-badge" alt="Build Status" />
+     <img src="https://img.shields.io/github/actions/workflow/status/emylincon/dec/go.yml?branch=main&style=for-the-badge" alt="Build Status" />
  </a>
  <a style="text-decoration:none" href="https://img.shields.io/badge/Version-1.4.5-informational?style=for-the-badge" target="_blank">
      <img src="https://img.shields.io/badge/Version-0.0.3-informational?style=for-the-badge" alt="Version: 0.0.3" />
